@@ -1,0 +1,43 @@
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "sohanmain@tes.com",
+    "password": "Soahn6969"
+}
+
+###
+GET http://localhost:5000/api/users
+
+###
+PATCH http://localhost:5000/api/places/66050d4112b83b1e975d56bb
+Content-Type: application/json
+
+{
+    "title": "Updated EmpireState",
+    "description" : "Updated description"
+}
+
+###
+DELETE  http://localhost:5000/api/places/660682bc41318f6d957af93b
+
+###
+POST http://localhost:5000/api/users/signup
+Content-Type: application/json
+
+{
+ "name": "Omi",
+ "email": "omi@test.com",
+ "password": "Omi6969"
+}
+
+###
+POST http://localhost:5000/api/places
+Content-Type: application/json
+
+{
+    "title":"Empire State Building",
+    "description":"One of the famous Building",
+    "address":"20 w 34th St, New York, NY 1001",
+    "creator":"66067a0aad680f7a351e77be"
+}
