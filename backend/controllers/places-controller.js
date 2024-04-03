@@ -6,19 +6,6 @@ const Place = require('../models/placeModel');
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
 
-let DUMMY_PLACES = [
-    {
-        id: 'p1',
-        title: 'Empire State Building',
-        description: 'One of the most famous sky scrappers in the world',
-        location: {
-            lat: 40.7484474,
-            lng: -73.9871516
-        },
-        address: '20 W 34th St, New York, NY 1001',
-        creator: 'u1'
-    }
-]
 
 const getPlaceById = async (req, res, next) => {
     const placeId = req.params.pid;
@@ -37,24 +24,24 @@ const getPlaceById = async (req, res, next) => {
     }
     res.json({ place: place.toObject({ getters: true }) });
 };
-
+ 
 const getPlacesByUserId = async (req, res, next) => {
     const userId = req.params.uid;
-    let places
-
+    //let places => used to find by creator 
+    let userWithPlaces
     try {
-        places = await Place.find({ creator: userId })
+        userWithPlaces = await User.findById(userId).populate('places')
     } catch (error) {
         const err = new HttpError('Failed while fetching, try again', 500);
         return next(err);
     }
 
-    if (!places || places.length === 0) {
+    if (!userWithPlaces || userWithPlaces.places.length === 0) {
         return next(
             new HttpError('Could not find places for the provided userId', 404)
         );
     }
-    res.json({ places: places.map((p) => p.toObject({ getters: true })) }); //toObject works for one object only
+    res.json({ places: userWithPlaces.places.map((p) => p.toObject({ getters: true })) }); //toObject works for one object only
 };
 
 const createPlace = async (req, res, next) => {

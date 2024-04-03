@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/api/users
+GET http://localhost:5000/api/places/user/660682b241318f6d957af937
 
 ###
 PATCH http://localhost:5000/api/places/66050d4112b83b1e975d56bb
@@ -39,5 +39,5 @@ Content-Type: application/json
     "title":"Empire State Building",
     "description":"One of the famous Building",
     "address":"20 w 34th St, New York, NY 1001",
-    "creator":"66067a0aad680f7a351e77be"
+    "creator":"660682b241318f6d957af937"
 }
