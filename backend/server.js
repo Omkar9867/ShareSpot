@@ -9,6 +9,14 @@ const usersRoutes = require('./routes/users-routes')
 
 const app = express();
 
+//Defining CORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+    next();
+})
+
 app.use(bodyParser.json());
 
 app.use('/api/places', placesRoutes);
@@ -27,7 +35,7 @@ app.use((error, req, res, next) => {
     res.json({message: error.message || 'An unknown error occured!'})
 });
 
-mongoose.connect('mongodb+srv://omkar:Omkar986986@cluster0.k03oyax.mongodb.net/places?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://omkar:Omkar986986@cluster0.k03oyax.mongodb.net/mern?retryWrites=true&w=majority&appName=Cluster0')
 .then(()=>{app.listen(5000)})
 .catch((error)=>{console.log(error)})
 
