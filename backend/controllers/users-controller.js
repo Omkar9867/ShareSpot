@@ -35,7 +35,7 @@ const signup = async (req, res, next) => {
             name, // name: name
             email, // email: email
             password, // password: password
-            image: 'https://google.png',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVMAgWVsREWm087nqxYIQDBW__Sx79sbO49Q&s',
             places: []
         });
         await existingUser.save()
