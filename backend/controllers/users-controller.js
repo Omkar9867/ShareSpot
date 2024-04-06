@@ -31,14 +31,14 @@ const signup = async (req, res, next) => {
             const err = new HttpError('Email Id already exist, try to login', 422);
             return next(err)
         };
-        existingUser = new User({
+        const createdUser = new User({
             name, // name: name
-            email, // email: email
+            email, // email: email  
             password, // password: password
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVMAgWVsREWm087nqxYIQDBW__Sx79sbO49Q&s',
+            image: req.file.path,
             places: []
         });
-        await existingUser.save()
+        await createdUser.save()
     } catch (error) {
         const err = new HttpError('Signing up Failed, please try again');
         return next(err);
