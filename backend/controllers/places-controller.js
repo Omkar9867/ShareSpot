@@ -67,7 +67,7 @@ const createPlace = async (req, res, next) => {
         description,
         location: coordinates,
         address,
-        image: 'https://google.opng',
+        image: req.file.path,
         creator
     });
 

@@ -35,7 +35,7 @@ const ImageUpload = (props) => {
         setIsValid(false);
         fileIsValid=false
     }
-    props.onInput(props.id, pickedFile, fileIsValid)  //=> if it bring isValid it would be not updated here 
+    props.onInput(props.id, pickedFile, fileIsValid)  //=> if fileisvalid is replaced with isValid because it would be not updated here 
   };
 
   return (
