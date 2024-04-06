@@ -1,4 +1,4 @@
-const uuid = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
 
 const MIME_TYPE_MAP = {
@@ -11,11 +11,11 @@ const fileUpload = multer({
     limits: 500000,
     storage: multer.diskStorage({
         destination: (req, file, cb)=>{
-            cg(null, 'uploads/images')
+            cb(null, 'uploads/images')
         },
         filename: (req, file, cb)=>{
             const ext = MIME_TYPE_MAP[file.mimetype]; 
-            cb(null, uuid() + '.' + ext)
+            cb(null, uuidv4() + '.' + ext)
         }
     }),
     fileFilter: (req, file, cb) => {
